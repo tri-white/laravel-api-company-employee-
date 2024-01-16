@@ -92,6 +92,15 @@ class CompaniesController extends Controller
     {
         $company = Companies::findOrFail($id);
         $company->update(Arr::except($request->validated(),'company_id'));
+        if ($request->hasFile('logo')) {
+            $path = $request->file('logo')->store(
+                'public/logos'
+            );
+        
+            $company->logo = $path;
+            $company->save();
+
+        }
         if(request()->ajax()){
 
             return new CompaniesResource($company);
