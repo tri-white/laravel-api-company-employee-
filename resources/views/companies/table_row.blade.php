@@ -17,10 +17,10 @@
             @csrf
             <button class="btn-warning" type="submit">Edit</button>
         </form>
-        <form action="{{route('companies.destroy', $company->id)}}">
-            @method('delete')
+        <form action="{{ route('companies.destroy', $company->id) }}" method="POST">
+            @method('DELETE')
             @csrf
-            <button class="btn-danger"  type="submit">Delete</button>
+            <button class="btn-danger" type="submit">Delete</button>
         </form>
     </td>
   </tr>
