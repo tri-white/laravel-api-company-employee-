@@ -21,11 +21,6 @@ class EmployeesController extends Controller
         }
 
         return view('employees.index',['employees'=>$employees]);
-        // use resources
-        // write request validation
-        // crop image
-        // write min 100x100 validation
-        // test if request()->ajax() works
     }
 
     /**
