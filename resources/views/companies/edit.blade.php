@@ -10,11 +10,29 @@
 </head>
 <body>
 <div class="container my-5">
-    
-    
-    <br>
-    <form action="{{route('companies.update', $company->id)}}">
+    <form action="{{ route('companies.update', $company->id) }}" enctype="multipart/form-data" method="POST">
         @csrf
+        @method('put')
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ $company->name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{$company->email}}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="website">Website URL</label>
+            <input type="url" class="form-control" id="website" name="website" value="{{$company->website}}">
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Photo</label>
+            <input type="file" class="form-control-file" id="photo" name="photo">
+        </div>
+
         <button class="btn-success" type="submit">Update</button>
     </form>
 </div>

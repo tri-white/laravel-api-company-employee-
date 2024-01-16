@@ -46,7 +46,7 @@ class CompaniesController extends Controller
             return new CompaniesResource($company);
 
         }
-        return redirect()->route('companies.show',['id'=>$company->id]);
+        return redirect()->route('companies.show',['company'=>$company->id]);
     }
 
 
@@ -83,7 +83,7 @@ class CompaniesController extends Controller
 
             return new CompaniesResource($company);
         }
-        return redirect()->route('companies.show',['id'=>$id]);
+        return redirect()->route('companies.show',['company'=>$id]);
     }
 
     /**

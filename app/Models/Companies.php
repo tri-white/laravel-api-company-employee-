@@ -12,6 +12,9 @@ class Companies extends Model
     protected $hidden = [
         'created_at','updated_at',
     ];
+    protected $fillable = [
+        'name','email','website','image'
+    ];
     public function employees():hasMany{
         return $this->hasMany('employees');
     }
