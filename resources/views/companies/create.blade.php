@@ -13,28 +13,42 @@
     <form action="{{ route('companies.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
         @method('post')
+    
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+            @error('name')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
-
+    
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+            @error('email')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
-
+    
         <div class="form-group">
             <label for="website">Website URL</label>
-            <input type="url" class="form-control" id="website" name="website">
+            <input type="url" class="form-control @error('website') is-invalid @enderror" id="website" name="website" value="{{ old('website') }}">
+            @error('website')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
-
+    
         <div class="form-group">
-            <label for="photo">Photo</label>
-            <input type="file" class="form-control-file" id="photo" name="photo">
+            <label for="logo">logo</label>
+            <input type="file" class="form-control-file @error('logo') is-invalid @enderror" id="logo" name="logo">
+            @error('logo')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
-
-        <button class="btn-success" type="submit">Store</button>
+    
+        <button class="btn btn-success" type="submit">Store</button>
     </form>
+    
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

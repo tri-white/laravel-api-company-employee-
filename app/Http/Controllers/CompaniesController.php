@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateCompaniesRequest;
 use App\Http\Resources\CompaniesList;
 use App\Http\Resources\CompaniesResource;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 class CompaniesController extends Controller
 {
     /**
@@ -41,7 +43,18 @@ class CompaniesController extends Controller
      */
     public function store(StoreCompaniesRequest $request)
     {
-        $company = Companies::create($request->validated());
+        $validatedData = $request->validated();
+       
+        $company = Companies::create($validatedData);
+        if ($request->hasFile('logo')) {
+            $path = $request->file('logo')->store(
+                'public/logos'
+            );
+        
+            $company->logo = $path;
+            $company->save();
+
+        }
         if(request()->ajax()){
             return new CompaniesResource($company);
 

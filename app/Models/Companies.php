@@ -18,4 +18,7 @@ class Companies extends Model
     public function employees():hasMany{
         return $this->hasMany('employees');
     }
+    public function getLogo() : string{
+        return $this->logo ? str_replace('public','storage',$this->logo): 'storage/logos/default.png';
+    }
 }

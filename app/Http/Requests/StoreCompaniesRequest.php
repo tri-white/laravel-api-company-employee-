@@ -24,11 +24,11 @@ class StoreCompaniesRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'website' => 'url',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'website' => 'nullable|url',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
-    public function messages()
+    /*public function messages()
     {
         return [
             'name.required' => 'Note cannot be empty',
@@ -36,5 +36,5 @@ class StoreCompaniesRequest extends FormRequest
             'name.max'  => 'Note cannot be longer than 5000 characters long!',
             //etc
         ];
-    }
+    }*/
 }

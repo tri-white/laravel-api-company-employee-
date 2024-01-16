@@ -17,6 +17,8 @@ use App\Http\Controllers\{CompaniesController, EmployeesController};
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::group(['middleware'=>'web'],function(){
     Route::resource("companies",CompaniesController::class);
     Route::resource("employees",EmployeesController::class);
+});
+
