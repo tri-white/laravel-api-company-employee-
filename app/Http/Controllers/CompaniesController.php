@@ -8,8 +8,8 @@ use App\Http\Requests\UpdateCompaniesRequest;
 use App\Http\Resources\CompaniesList;
 use App\Http\Resources\CompaniesResource;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 class CompaniesController extends Controller
 {
     /**
@@ -51,7 +51,20 @@ class CompaniesController extends Controller
                 'public/logos'
             );
         
-            $company->logo = $path;
+            // create image manager with desired driver
+            $manager = new ImageManager(new Driver());
+
+            // read image from file system
+            $image = $manager->read($path);
+
+            // resize image proportionally to 300px width
+            $image->scale(width: 100);
+
+            // save modified image in new format 
+            $image->toPng()->save($path);
+
+            dd($image);
+            $company->logo = $img;
             $company->save();
 
         }
