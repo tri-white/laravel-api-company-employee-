@@ -28,7 +28,7 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        return view('employees.create'); //also output select of companies
     }
 
     /**
@@ -63,7 +63,7 @@ class EmployeesController extends Controller
     public function edit(int $id)
     {
         $employee = Employees::findOrFail($id);
-        return view('employees.edit',['employee'=>$employee]);
+        return view('employees.edit',['employee'=>$employee]);  //also output select of companies
     }
 
     /**

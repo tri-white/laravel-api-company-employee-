@@ -10,6 +10,10 @@
 </head>
 <body>
 <div class="container my-5">
+    <form action="{{route('companies.create')}}">
+        @csrf
+        <button class="btn-success" type="submit">Create</button>
+    </form>
     <table class="table">
         <thead>
           <tr>
@@ -18,6 +22,7 @@
             <th scope="col">Email</th>
             <th scope="col">URL</th>
             <th scope="col">Image</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>

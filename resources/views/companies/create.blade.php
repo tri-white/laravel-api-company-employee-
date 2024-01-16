@@ -13,9 +13,9 @@
     
     
     <br>
-    <form action="{{route('companies.update', $company->id)}}">
+    <form action="{{route('companies.store')}}">
         @csrf
-        <button class="btn-success" type="submit">Update</button>
+        <button class="btn-success" type="submit">Create</button>
     </form>
 </div>
 
