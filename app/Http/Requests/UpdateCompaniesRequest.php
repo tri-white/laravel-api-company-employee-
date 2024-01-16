@@ -23,9 +23,10 @@ class UpdateCompaniesRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'website' => 'url',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'email' => 'required|email|unique:companies,email,'.$this->company,
+            'website' => 'nullable|url|unique:companies,website,'.$this->company,
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
+        
     }
 }

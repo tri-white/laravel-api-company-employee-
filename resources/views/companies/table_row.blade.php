@@ -5,7 +5,7 @@
         <td>{{ $company->name; }}</td>
         <td>{{ $company->email; }}</td>
         <td>{{ $company->website; }}</td>
-        <td><img src="{{ asset($company->getLogo())}}" alt="company logo"></td>
+        <td><img src="{{ asset($company->getLogo())}}" width="100" height="100" alt="company logo"></td>
     <td class="d-flex flex-row justify-content-around"> 
         <form action="{{route('companies.show',$company->id)}}">
             @method('get')
