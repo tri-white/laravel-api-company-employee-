@@ -24,8 +24,8 @@ class UpdateEmployeesRequest extends FormRequest
         return [
             'first_name' => 'required|string|min:1|max:255',
             'last_name' => 'required|string|min:1|max:255',
-            'phone' => 'unique: employees,phone|required|max:255|min:1',
-            'email' => 'unique: employees,email|required|min:1|email|max:255',
+            'phone' => 'unique: employees,phone,'.$this->employee.'|required|max:255|min:1',
+            'email' => 'unique: employees,email,'.$this->employee.'|required|min:1|email|max:255',
             'company_id' => 'exists:companies,id|number',
         ];
     }
